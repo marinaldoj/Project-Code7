@@ -15,4 +15,8 @@ class Debts extends Model
         "date_debt",
         "value_debt",
     ];
+
+    protected $casts = [
+        "debtor_id" => "integer"
+    ];
 }

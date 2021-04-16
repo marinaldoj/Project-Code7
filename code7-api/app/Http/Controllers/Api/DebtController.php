@@ -5,13 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Debts;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class DebtController extends Controller
 {
-    /**
-    * @return \Illuminate\Http\Response
-    */
-
     public function createNewDebt(Request $request){
         $debt = new Debts;
         $debt->debtor_id = $request->id;
@@ -36,6 +33,7 @@ class DebtController extends Controller
     }
 
     public function getAllDebts($id){
-        return response()->json(Debts::where('id', $id)->get(),200);
+        $debts = Debts::where('debtor_id', $id)->get();
+        return response()->json($debts,200);
     }
 }
